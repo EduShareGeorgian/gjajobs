@@ -1,0 +1,117 @@
+Init GJAJOBS
+Submitting testJob for testUser
+Error submitting job: ORA-12541: Cannot connect. No listener at host localhost port 1521. (CONNECTION_ID=JK3epaN1QXij+f1xQaz02Q==)
+https://docs.oracle.com/error-help/db/ora-12541/
+Init GJAJOBS
+Init GJAJOBS
+Test log message
+Init GJAJOBS
+Submitting testJob for testUser
+Error submitting job: ORA-12541: Cannot connect. No listener at host localhost port 1521. (CONNECTION_ID=XGidSsq4R9Wn4L9Hn3en/w==)
+https://docs.oracle.com/error-help/db/ora-12541/
+Init GJAJOBS
+Init GJAJOBS
+Test log message
+Init GJAJOBS
+Submitting testJob for testUser
+Error submitting job: ORA-12541: Cannot connect. No listener at host localhost port 1521. (CONNECTION_ID=hCiQ+0vKTKyE3M45a1IxOQ==)
+https://docs.oracle.com/error-help/db/ora-12541/
+Init GJAJOBS
+Init GJAJOBS
+Test log message
+Init GJAJOBS
+Init GJAJOBS
+Test log message
+Init GJAJOBS
+Submitting testJob for testUser
+Error submitting job: ORA-12541: Cannot connect. No listener at host localhost port 1521. (CONNECTION_ID=yD615n1SREqH3MKQxx9TAA==)
+https://docs.oracle.com/error-help/db/ora-12541/
+Init GJAJOBS
+Submitting JOB1 for user1
+Error submitting job: ORA-12541: Cannot connect. No listener at host localhost port 1521. (CONNECTION_ID=YEh55XM4RGuyqSmKV1S6dw==)
+https://docs.oracle.com/error-help/db/ora-12541/
+Sanitizing JOB1 for user1
+Completing JOB1 for user1
+Error completing job: ORA-12541: Cannot connect. No listener at host localhost port 1521. (CONNECTION_ID=N3uo39WKTFaS829eqnub7g==)
+https://docs.oracle.com/error-help/db/ora-12541/
+Init GJAJOBS
+Test log message
+Init GJAJOBS
+Submitting testJob for testUser
+Error submitting job: ORA-12541: Cannot connect. No listener at host localhost port 1521. (CONNECTION_ID=uvN9n95wRMmFxda/sBoHaQ==)
+https://docs.oracle.com/error-help/db/ora-12541/
+Init GJAJOBS
+Submitting JOB1 for user1
+Error submitting job: ORA-12541: Cannot connect. No listener at host localhost port 1521. (CONNECTION_ID=9Ia3mdOBRXeMFmtdQBa1Ag==)
+https://docs.oracle.com/error-help/db/ora-12541/
+Sanitizing JOB1 for user1
+ORACLE_SID environment variable is not set.
+Completing JOB1 for user1
+Error completing job: ORA-12541: Cannot connect. No listener at host localhost port 1521. (CONNECTION_ID=P3hX8CkyQ5WLIW2MQreVag==)
+https://docs.oracle.com/error-help/db/ora-12541/
+Init GJAJOBS
+Test log message
+Init GJAJOBS
+Submitting testJob for testUser
+Error submitting job: ORA-12541: Cannot connect. No listener at host localhost port 1521. (CONNECTION_ID=VqsQrIJaSo2auTL8sD9xKQ==)
+https://docs.oracle.com/error-help/db/ora-12541/
+Init GJAJOBS
+Submitting job1 for user1
+Error submitting job: ORA-12541: Cannot connect. No listener at host localhost port 1521. (CONNECTION_ID=gqX2VEAFR4ewKq/iCqvbCA==)
+https://docs.oracle.com/error-help/db/ora-12541/
+Sanitizing JOB1 for user1
+ORACLE_SID environment variable is not set.
+Completing job1 for user1
+Error completing job: ORA-12541: Cannot connect. No listener at host localhost port 1521. (CONNECTION_ID=MmosVXJXTf2eaJU1iDLaiw==)
+https://docs.oracle.com/error-help/db/ora-12541/
+Init GJAJOBS
+Test log message
+Init GJAJOBS
+Submitting testJob for testUser
+Error submitting job: ORA-12541: Cannot connect. No listener at host localhost port 1521. (CONNECTION_ID=q9Y1MwTjQ2a8hYrgg1VqFQ==)
+https://docs.oracle.com/error-help/db/ora-12541/
+Init GJAJOBS
+Submitting job1 for user1
+Error submitting job: ORA-12541: Cannot connect. No listener at host localhost port 1521. (CONNECTION_ID=g/6HkC5hRpqnJJruG9McPQ==)
+https://docs.oracle.com/error-help/db/ora-12541/
+Sanitizing JOB1 for user1
+ORACLE_SID environment variable is not set.
+Completing job1 for user1
+Error completing job: ORA-12541: Cannot connect. No listener at host localhost port 1521. (CONNECTION_ID=8r1CSsXtS3CWBPCjIJaDMg==)
+https://docs.oracle.com/error-help/db/ora-12541/
+Init GJAJOBS
+Test log message
+Init GJAJOBS
+Submitting testJob for testUser
+Error submitting job: ORA-12541: Cannot connect. No listener at host localhost port 1521. (CONNECTION_ID=c8MSIAKNTweMR6nP3SjVNw==)
+https://docs.oracle.com/error-help/db/ora-12541/
+Init GJAJOBS
+Submitting job1 for user1
+Error submitting job: ORA-12541: Cannot connect. No listener at host localhost port 1521. (CONNECTION_ID=GjMBTNGIRB+w12upv//JSw==)
+https://docs.oracle.com/error-help/db/ora-12541/
+Sanitizing JOB1 for user1
+ORACLE_SID environment variable is not set.
+Completing job1 for user1
+Error completing job: ORA-12541: Cannot connect. No listener at host localhost port 1521. (CONNECTION_ID=PRy589F1TTWRfI651oWJLQ==)
+https://docs.oracle.com/error-help/db/ora-12541/
+Init GJAJOBS
+Test log message
+Init GJAJOBS
+Submitting testJob for testUser
+Error submitting job: ORA-12541: Cannot connect. No listener at host localhost port 1521. (CONNECTION_ID=Tu2qT+JRTMaLIVCsBTJHjA==)
+https://docs.oracle.com/error-help/db/ora-12541/
+Init GJAJOBS
+Submitting testJob for testUser
+Error submitting job: ORA-12541: Cannot connect. No listener at host localhost port 1521. (CONNECTION_ID=FIcP6gWGSoG42NLgHqTbkg==)
+https://docs.oracle.com/error-help/db/ora-12541/
+Init GJAJOBS
+Submitting job1 for user1
+Error submitting job: ORA-12541: Cannot connect. No listener at host localhost port 1521. (CONNECTION_ID=Fe4QkmkWTlqpoG0jARGXDQ==)
+https://docs.oracle.com/error-help/db/ora-12541/
+Sanitizing JOB1 for user1
+ORACLE_SID environment variable is not set.
+Completing job1 for user1
+Error completing job: ORA-12541: Cannot connect. No listener at host localhost port 1521. (CONNECTION_ID=smDnChOlQ4G/C9vpDcR01Q==)
+https://docs.oracle.com/error-help/db/ora-12541/
+Init GJAJOBS
+Test log message

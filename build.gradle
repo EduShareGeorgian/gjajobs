@@ -1,0 +1,54 @@
+plugins {
+    id("io.micronaut.application") version "4.4.4"
+    id("org.graalvm.buildtools.native") version "0.9.23"
+    id("groovy")
+}
+
+micronaut {
+    runtime("netty")
+    processing {
+        incremental(true)
+        annotations("com.georgiancollege.*")
+    }
+}
+
+repositories {
+    mavenCentral()
+    gradlePluginPortal()
+}
+
+dependencies {
+    annotationProcessor("io.micronaut:micronaut-inject-java")
+    implementation("io.micronaut:micronaut-runtime")
+    implementation("io.micronaut.picocli:micronaut-picocli")
+    // JDBC driver for Access or Oracle as needed
+    // implementation "net.sf.ucanaccess:ucanaccess:5.0.1"  // if using Access
+    // or Oracle:
+    implementation "com.oracle.database.jdbc:ojdbc11:21.8.0.0"
+
+    // Spock dependencies
+    testImplementation("org.spockframework:spock-core:2.3-groovy-3.0")
+    testImplementation("io.micronaut.test:micronaut-test-spock:4.0.0")
+}
+
+configurations.all {
+    resolutionStrategy {
+        force 'org.apache.groovy:groovy:4.0.24'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+application {
+    mainClass.set("com.georgiancollege.GjajobsCommand")
+}
+
+graalvmNative {
+    binaries {
+        main {
+            buildArgs.add("-H:Name=gjajobs")
+        }
+    }
+}
