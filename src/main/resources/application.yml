@@ -1,0 +1,17 @@
+datasources:
+
+  default:
+    url: "jdbc:oracle:thin:@//testrac2-scan.admin.georgianc.on.ca:1521/gsb3"
+    username: "thiles"
+    password: "junjun"
+    driverClassName: "oracle.jdbc.OracleDriver"
+    maximum-pool-size: 1
+    minimum-idle: 1
+
+logging:
+  levels:
+    "oracle.jdbc": TRACE
+
+micronaut:
+  server:
+    enabled: false

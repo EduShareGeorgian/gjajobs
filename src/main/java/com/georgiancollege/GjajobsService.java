@@ -1,6 +1,9 @@
 package com.georgiancollege;
 
+import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
+import javax.sql.DataSource;
+
 import java.nio.file.*;
 import java.io.IOException;
 import java.sql.*;
@@ -18,6 +21,9 @@ public class GjajobsService {
     private String logFile;
     private String reportsFolder;
 
+    @Inject
+    DataSource dataSource; // Injected datasource configured via Micronaut
+
     public void init() throws IOException {
         reportsFolder = System.getenv("REPORTS_FOLDER");
         if (reportsFolder == null) reportsFolder = "reports";
@@ -31,34 +37,30 @@ public class GjajobsService {
     }
 
     public void submit(String job, String jobType, String user, String pwd, String seqno, String printer, String formName, String submitTime, String completionTime) {
-        putLog("Submitting " + job + " for " + user);
-
-        String url = "jdbc:oracle:thin:@//localhost:1521/orcl";
-        String username = "your_db_username";
-        String password = "your_db_password";
+        putLog("Submitting " + job + " for " + safeToUpper(user, "UNKNOWN"));
 
         String insertSQL = "INSERT INTO GWJSUBQ (gwjsubq_Server, gwjsubq_Status, gwjsubq_Service, gwjsubq_Job, gwjsubq_Seq, gwjsubq_User, gwjsubq_Submitted, gwjsubq_SID, gwjsubq_P1, gwjsubq_P2, gwjsubq_P3, gwjsubq_P4, gwjsubq_P5, gwjsubq_P6, gwjsubq_P7, gwjsubq_P8, gwjsubq_P9) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-        try (Connection conn = DriverManager.getConnection(url, username, password);
+        
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
 
             pstmt.setString(1, InetAddress.getLocalHost().getHostName().toUpperCase());
             pstmt.setString(2, " ");
             String oracleSid = System.getenv("ORACLE_SID");
             if (oracleSid != null) {
-                pstmt.setString(3, oracleSid.substring(0, 4).toUpperCase());
-                pstmt.setString(8, oracleSid.toUpperCase());
+                pstmt.setString(3, safeToUpper(oracleSid.substring(0, 4), "DEFAULT"));
+                pstmt.setString(8, safeToUpper(oracleSid, "DEFAULT"));
             } else {
                 pstmt.setString(3, "DEFAULT");
                 pstmt.setString(8, "DEFAULT");
             }
-            pstmt.setString(4, job.toUpperCase());
+            pstmt.setString(4, safeToUpper(job, "UNKNOWN"));
             pstmt.setInt(5, Integer.parseInt(seqno));
-            pstmt.setString(6, user.toUpperCase());
+            pstmt.setString(6, safeToUpper(user, "UNKNOWN"));
             pstmt.setTimestamp(7, new Timestamp(System.currentTimeMillis()));
             pstmt.setString(9, job);
             pstmt.setString(10, jobType);
-            pstmt.setString(11, user);
+            pstmt.setString(11, safeToUpper(user, "UNKNOWN"));
             pstmt.setString(12, encrypt(pwd));
             pstmt.setString(13, seqno);
             pstmt.setString(14, printer);
@@ -125,15 +127,11 @@ public class GjajobsService {
     }
 
     public void complete(String job, String jobType, String user, String pwd, String seqno, String printer, String formName, String submitTime, String completionTime) {
-        putLog("Completing " + job + " for " + user);
-
-        String url = "jdbc:oracle:thin:@//localhost:1521/orcl";
-        String username = "your_db_username";
-        String password = "your_db_password";
+        putLog("Completing " + job + " for " + safeToUpper(user, "UNKNOWN"));
 
         String updateSQL = "UPDATE GWJSUBQ SET gwjsubq_Status = ?, gwjsubq_Message = ?, gwjsubq_Completed = ?, gwjsubq_SID = ?, gwjsubq_P1 = ?, gwjsubq_P2 = ?, gwjsubq_P3 = ?, gwjsubq_P4 = ?, gwjsubq_P5 = ?, gwjsubq_P6 = ?, gwjsubq_P7 = ?, gwjsubq_P8 = ?, gwjsubq_P9 = ? WHERE gwjsubq_Service = ? AND gwjsubq_Job = ? AND gwjsubq_Seq = ? AND gwjsubq_User = ?";
 
-        try (Connection conn = DriverManager.getConnection(url, username, password);
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(updateSQL)) {
 
             pstmt.setString(1, "X");
@@ -141,25 +139,24 @@ public class GjajobsService {
             pstmt.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
             String oracleSid = System.getenv("ORACLE_SID");
             if (oracleSid != null) {
-                pstmt.setString(4, oracleSid.toUpperCase());
-                pstmt.setString(14, oracleSid.substring(0, 4).toUpperCase());
+                pstmt.setString(4, safeToUpper(oracleSid, "DEFAULT"));
+                pstmt.setString(14, safeToUpper(oracleSid.substring(0, 4), "DEFAULT"));
             } else {
                 pstmt.setString(4, "DEFAULT");
                 pstmt.setString(14, "DEFAULT");
             }
-            pstmt.setString(5, job);
-            pstmt.setString(6, jobType);
-            pstmt.setString(7, user);
+            pstmt.setString(5, safeToUpper(job, "UNKNOWN"));
+            pstmt.setString(6, safeToUpper(jobType, "UNKNOWN"));
+            pstmt.setString(7, safeToUpper(user, "UNKNOWN"));
             pstmt.setString(8, encrypt(pwd));
-            pstmt.setString(9, seqno);
-            pstmt.setString(10, printer);
-            pstmt.setString(11, formName);
-            pstmt.setString(12, submitTime);
-            pstmt.setString(13, completionTime);
-            pstmt.setString(15, job.toUpperCase());
+            pstmt.setString(9, safeToUpper(seqno, "UNKNOWN"));
+            pstmt.setString(10, safeToUpper(printer, "UNKNOWN"));
+            pstmt.setString(11, safeToUpper(formName, "UNKNOWN"));
+            pstmt.setString(12, safeToUpper(submitTime, "UNKNOWN"));
+            pstmt.setString(13, safeToUpper(completionTime, "UNKNOWN"));
+            pstmt.setString(15, safeToUpper(job, "UNKNOWN"));
             pstmt.setInt(16, Integer.parseInt(seqno));
-            pstmt.setString(17, user.toUpperCase());
-
+            pstmt.setString(17, safeToUpper(user, "UNKNOWN"));
             pstmt.executeUpdate();
         } catch (SQLException e) {
             putLog("Error completing job: " + e.getMessage());
@@ -179,5 +176,9 @@ public class GjajobsService {
     private String encrypt(String pwd) {
         // Placeholder for encryption logic
         return pwd; // Replace with actual encryption logic
+    }
+
+    private String safeToUpper(String str, String defaultStr) {
+        return (str != null) ? str.toUpperCase() : defaultStr;
     }
 }

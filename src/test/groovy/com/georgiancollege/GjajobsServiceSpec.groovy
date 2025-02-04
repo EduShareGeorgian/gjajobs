@@ -4,6 +4,7 @@ import spock.lang.Specification
 import spock.lang.Shared
 import java.nio.file.*
 import java.sql.*
+import javax.sql.DataSource
 
 class GjajobsServiceSpec extends Specification {
 
@@ -15,7 +16,13 @@ class GjajobsServiceSpec extends Specification {
     }
 
     def setup() {
-        // Setup code if needed
+        // Mock DataSource and Connection
+        def dataSource = Mock(DataSource)
+        def conn = Mock(Connection)
+        def pstmt = Mock(PreparedStatement)
+        service.dataSource = dataSource
+        dataSource.getConnection() >> conn
+        conn.prepareStatement(_) >> pstmt
     }
 
     def "init should create logs directory and initialize log file"() {

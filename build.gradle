@@ -25,10 +25,13 @@ dependencies {
     // implementation "net.sf.ucanaccess:ucanaccess:5.0.1"  // if using Access
     // or Oracle:
     implementation "com.oracle.database.jdbc:ojdbc11:21.8.0.0"
+    implementation("io.micronaut.sql:micronaut-jdbc-hikari")
 
     // Spock dependencies
     testImplementation("org.spockframework:spock-core:2.3-groovy-3.0")
     testImplementation("io.micronaut.test:micronaut-test-spock:4.0.0")
+
+    runtimeOnly("org.yaml:snakeyaml")
 }
 
 configurations.all {
